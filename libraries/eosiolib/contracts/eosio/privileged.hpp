@@ -12,6 +12,9 @@ namespace eosio {
          __attribute__((eosio_wasm_import))
          bool is_privileged( uint64_t account );
 
+        __attribute__((eosio_wasm_import))
+         void get_account_ram_usage( uint64_t account, int64_t* used_ram_bytes );
+
          __attribute__((eosio_wasm_import))
          void get_resource_limits( uint64_t account, int64_t* ram_bytes, int64_t* net_weight, int64_t* cpu_weight );
 
@@ -181,6 +184,19 @@ namespace eosio {
     *  @param params - It will be replaced with the retrieved blockchain params
     */
    void get_blockchain_parameters(eosio::blockchain_parameters& params);
+
+
+    /**
+    *  Get the ram usage of an account
+    *
+    *  @ingroup privileged
+    *  @param account - name of the account whose resource limit to get
+    *  @param used_ram_bytes -  output to hold retrieved ram usage in absolute bytes
+    */
+   inline void get_account_ram_usage( name account, int64_t& used_ram_bytes ) {
+      internal_use_do_not_use::get_account_ram_usage( account.value, &used_ram_bytes);
+   }
+
 
     /**
     *  Get the resource limits of an account

@@ -43,6 +43,7 @@ namespace eosio { namespace native {
    }
 
 #define INTRINSICS(intrinsic_macro) \
+intrinsic_macro(get_account_ram_usage) \
 intrinsic_macro(get_resource_limits) \
 intrinsic_macro(set_resource_limits) \
 intrinsic_macro(set_proposed_producers) \

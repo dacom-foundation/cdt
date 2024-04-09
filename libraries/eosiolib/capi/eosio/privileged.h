@@ -11,6 +11,16 @@ extern "C" {
  */
 
  /**
+ * Get the RAM usage an account
+ *
+ * @param account - name of the account whose resource limit to get
+ * @param used_ram_bytes - pointer to `int64_t` to hold retrieved ram usage in absolute bytes
+ */
+__attribute__((eosio_wasm_import))
+void get_account_ram_usage( capi_name account, int64_t* used_ram_bytes );
+
+
+ /**
  * Get the resource limits of an account
  *
  * @param account - name of the account whose resource limit to get
